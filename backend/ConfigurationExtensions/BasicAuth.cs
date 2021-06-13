@@ -56,8 +56,8 @@ namespace backend.ConfigurationExtensions
                 return AuthenticateResult.Fail("Invalid Username or Password");
 
             var claims = new[] {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role, user.Role)
+                new System.Security.Claims.Claim(ClaimTypes.Name, user.UserName),
+                new System.Security.Claims.Claim(ClaimTypes.Role, user.Role)
         };
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

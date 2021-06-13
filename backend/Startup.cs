@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.ConfigurationExtensions;
 using backend.Interfaces;
+using backend.Models;
 using backend.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace backend
@@ -30,6 +32,8 @@ namespace backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DbConfiguration>(Configuration.GetSection(nameof(DbConfiguration)));
+            services.AddSingleton<IDbConfiguration>(sp => sp.GetRequiredService<IOptions<DbConfiguration>>().Value);
             services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -41,6 +45,7 @@ namespace backend
                 .AddScheme<AuthenticationSchemeOptions, BasicAuth>("BasicAuthentication", null);
 
             services.AddScoped<IUserAuthService, UserAuthenticationService>();
+            services.AddScoped<IClaimsService, ClaimsService>();
 
         }
 

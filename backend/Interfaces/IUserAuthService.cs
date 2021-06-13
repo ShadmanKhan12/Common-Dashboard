@@ -10,5 +10,6 @@ namespace backend.Interfaces
     {
         List<User> GetAllUsers();
         User AutheticateUser(string userName, string pwd);
+        string GenerateToken(User user);
     }
 }

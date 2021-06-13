@@ -1,5 +1,6 @@
 ﻿using backend.Interfaces;
 using backend.Models;
+using backend.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,31 @@ namespace backend.Services
         public User AutheticateUser(string userName,string password)
         {
             var user = _users.Find(item => item.UserName == userName && item.Password == password);
-            return user;
+            if(user != null)
+            {
+                string token = GenerateToken(user);
+                var userData = new User()
+                {
+                    AccessToken = token,
+                    Role = user.Role,
+                    UserName = user.UserName,
+                    Password = user.Password
+                };
+
+                return userData;
+            }
+
+            else
+            {
+                return null;
+            }
+        }
+
+        public string GenerateToken(User user)
+        {
+            var plainText = $"{user.UserName}:{user.Password}";
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
         }
     }
 }

@@ -26,19 +26,13 @@ namespace backend.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] User user)
         {
-            var users = _userService.AutheticateUser(user.UserName, user.Password);
-
-            if (user == null)
+            var data = _userService.AutheticateUser(user.UserName, user.Password);
+            
+            if (data == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
-
-            return Ok(users);
+            
+            return Ok(data);
         }
-        [Authorize(Roles ="User")]
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var users =  _userService.GetAllUsers();
-            return Ok(users);
-        }
+      
     }
 }
