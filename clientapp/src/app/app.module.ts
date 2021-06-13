@@ -16,7 +16,7 @@ import { AuthGuard} from './auth.guard'
 
 const routes: Routes = [
   { 
-    path: 'home',
+    path: 'login',
     component: LoginComponent
    },
   { 
@@ -36,7 +36,7 @@ const routes: Routes = [
        role: 'Admin'
      }
     },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   
 ]
 

@@ -16,7 +16,7 @@ claimData : Claim = new Claim();
 
   onSubmit(){
     this.claimService.requestClaim(this.claimData).subscribe(response=>{
-      console.log(response);
+      
     })
   }
 
