@@ -31,9 +31,10 @@ export class AdminDashboardComponent implements OnInit {
   onDelete(itemId : any){
     if(itemId){
       this.claimService.rejectClaim(itemId).subscribe(response=>{
-      if(response){
+     
         alert("Rejected Claim");
-      }
+        this.ngOnInit();
+     
       })
     }
   }
