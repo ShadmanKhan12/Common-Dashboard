@@ -1,0 +1,26 @@
+<app-user-navbar></app-user-navbar>
+<div class="container-fluid">
+    <form (ngSubmit)="onSubmit()" #claimRequestForm="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label >UserID</label>
+            <input type="number" [(ngModel)]="claimData.userId" #userId="ngModel" name="userId"  class="form-control" id="inputEmail4" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label >User Department</label>
+            <input type="text" [(ngModel)]="claimData.userDept" #userDept="ngModel"  name="userDept" class="form-control" id="inputPassword4" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label >Resouce Link</label>
+            <input type="text" [(ngModel)]="claimData.resourceLink" #resourceLink="ngModel"  name="resourceLink" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-2">
+            <label >Resouce Price</label>
+            <input type="number" [(ngModel)]="claimData.resourcePrice" #resourcePrice="ngModel"  name="resourcePrice" class="form-control" id="inputZip">
+          </div>    
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!claimRequestForm.form.valid">Submit Request</button>
+      </form>
+</div>
