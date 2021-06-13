@@ -29,6 +29,24 @@ Installation Guideline:
 Backend Uses kestrel server. 
 3. open the clientapp folder => open shell => type "code ." => open terminal => run command => npm install and then "ng s -o"
 
+Screenshots:
+The login Page is kept simple. Both user/admin use this page.
+![image](https://user-images.githubusercontent.com/71847918/121813600-8133a580-cc8e-11eb-826d-ced47d80d955.png)
+
+User Dashboard Page
+![image](https://user-images.githubusercontent.com/71847918/121813653-cce64f00-cc8e-11eb-8239-3e640de19378.png)
+
+Finance Dashboard Page. 
+![image](https://user-images.githubusercontent.com/71847918/121813718-20f13380-cc8f-11eb-8b65-d2faccc25530.png)
+
+
+
+
+
+
+
+
+
 
 
 
